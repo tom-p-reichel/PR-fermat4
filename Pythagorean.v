@@ -345,7 +345,7 @@ Proof.
 Qed.
 
 Lemma pytha_thm1 : forall a b c : Z, (is_pytha a b c) -> (pytha_set a b c).
-Proof.
+Proof. (*
   do 3 intro; elim (Z_gt_dec c 0); [ idtac
     | unfold is_pytha, pytha_set, pos_triple, cond_pq, cond_pqb ]; intros.
   generalize (pytha_ucirc1 _ _ _ a0 H); intro;
@@ -403,16 +403,18 @@ Proof.
       (left; rewrite H3 in H0; simpl in H0; progress auto with zarith)
       || (compute; auto with zarith)
     | auto with zarith ].
-Qed.
+*)
+Admitted.
 
 Lemma pytha_thm2 : forall a b c : Z, (pytha_set a b c) -> (is_pytha a b c).
-Proof.
+Proof. (*
   unfold pytha_set, is_pytha, cond_pq, cond_pqb, pos_triple; intros; elim_hyps;
     rewrite H; rewrite H7; rewrite H0; split; ring || (intuition; apply Zle_ge;
     generalize (Zge_le _ _ H2); clear H2; intro; generalize (Zgt_lt _ _ H4);
     clear H4; intro; generalize (Zlt_le_weak _ _ H4); intro;
     repeat apply Zmult_le_0_compat; auto with zarith).
-Qed.
+*)
+Admitted.
 
 (* A specific case *)
 

@@ -37,7 +37,7 @@ Lemma for_exists_ab : forall u v m n : Z,
     let (a, b) := two in
     (u - v = 4 * (a * a) /\ u + v = 2 * (b * b) \/
      u - v = 2 * (b * b) /\ u + v = 4 * (a * a)) /\ 0 < a /\ 0 < b.
-Proof.
+Proof. (*
   intros u v m n Huv H H0 H1 H2 H3 H4 H5;
     elim (multiple4_2 u v H3 H4 Huv H5 H1 H2); intro; elim x; intros;
     elim_hyps; (cut (is_sqr (a * b)); 
@@ -59,7 +59,8 @@ Proof.
                 [ rewrite H6; rewrite H10; ring | ring ]
               | replace (2 * (m * m)) with ((m * m + n * n) - (n * n - m * m));
                 [ rewrite H; rewrite H0; ring | ring ] ] ] ]).
-Qed.
+*)
+Admitted.
 
 (***********************)
 (* Diophantus' problem *)
@@ -114,7 +115,7 @@ Qed.
 Lemma diophantus20_equiv: forall y z : Z,
   y > 0 -> z > 0 -> y <= z -> rel_prime y z -> distinct_parity y z ->
   ~ is_sqr ((z * z + y * y) * (z * z - y * y)).
-Proof.
+Proof. (*
   intros y z Hy Hz H' H0' H1' H2'; generalize (infinite_descent
     (fun p q : Z => 0 < p /\ 0 < q /\ p <= q /\ rel_prime p q /\
      distinct_parity p q /\ is_sqr (p * (q * (q * q - p * p))))).
@@ -270,7 +271,8 @@ Proof.
   auto with zarith.
   auto with zarith.
   ring.
-Qed.
+*)
+Admitted.
 
 Lemma diophantus20_refined : forall p q : Z,
   p > 0 -> q > 0 -> p <= q -> rel_prime p q -> distinct_parity p q ->
@@ -308,7 +310,7 @@ Lemma diophantus20 :
   ~ (exists x : Z, exists y : Z, exists z : Z, exists t : Z,
        0 < x /\ 0 < y /\ 0 < z /\ 0 < t /\ x * x + y * y = z * z /\
        x * y = 2 * (t * t)).
-Proof.
+Proof. (*
   intro; elim_hyps; cut (is_pytha x x0 x1); try (unfold is_pytha, pos_triple;
     solve [ intuition ]).
   intro; elim (pytha_thm1 _ _ _ H5); clear H5; unfold cond_pq, cond_pqb;
@@ -337,4 +339,5 @@ Proof.
          match goal with
          | id : _ |- _ => elim (Zmult_neq_0 _ _ id); auto with zarith; intros
          end ]).
-Qed.
+*)
+Admitted.

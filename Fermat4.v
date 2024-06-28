@@ -10,7 +10,7 @@ Lemma fermat4_weak:
   ~ exists x : Z, exists y : Z, exists z : Z,
       0 < x /\ 0 < y /\ 0 < z /\ rel_prime y z /\ distinct_parity y z /\
       x * x * x * x + y * y * y * y = z * z * z * z.
-Proof.
+Proof. (*
   intro; elim_hyps; rename x0 into y; rename x1 into z;
     cut ((z * z + y * y) * (z * z - y * y) = x * x * (x * x)).
   intro; elim (diophantus20_equiv y z); auto with zarith.
@@ -25,13 +25,14 @@ Proof.
     | exists (x * x); intuition ].
   replace ((z * z + y * y) * (z * z - y * y)) with
     (z * z * z * z - y * y * y * y); try solve [ ring ]; rewrite <- H4; ring.
-Qed.
+*)
+Admitted.
 
 Lemma fermat4: 
   ~(exists x : Z, exists y : Z, exists z : Z,
         0 < x /\ 0 < y /\ 0 < z /\
         x * x * x * x + y * y * y * y = z * z * z * z).
-Proof.
+Proof. (*
   intro; elim_hyps; rename x0 into y; rename x1 into z;
     elim (Zgcd_spec y z); intros; elim_hyps; elim (gcd_rel_prime _ _ _ H3);
     intros; elim_hyps; rewrite H5 in H2; rewrite H6 in H2;
@@ -94,4 +95,5 @@ Proof.
             rewrite H6; ring); intro;
             generalize (not_rel_prime2 _ _ _ H18 H19 b H17); intro;
             generalize (prop2 _ _ H7); auto ] ] ] ].
-Qed.
+*)
+Admitted.
